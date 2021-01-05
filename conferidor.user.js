@@ -6,6 +6,7 @@
 // @author       github.com/jfbueno
 // @match        *://app.organizze.com.br/*/cartao-de-credito/*/faturas/*
 // @grant        none
+// @run-at      document-idle
 // ==/UserScript==
 
 (function() {
@@ -17,15 +18,16 @@
         parentRow.classList.remove('hover')
     }
 
-    window.onload = function() {
-        const tds = document.querySelectorAll('td.type')
+    const tds = document.querySelectorAll('td.type')
 
-        for(let td of tds) {
-            td.querySelector('span').remove()
-            const input = document.createElement('input')
-            input.type = 'checkbox'
-            td.appendChild(input)
-            input.onclick = checkConferenciaClick
-        }
+    console.log(tds)
+
+    for(let td of tds) {
+        td.querySelector('span').remove()
+        const input = document.createElement('input')
+        input.type = 'checkbox'
+        td.appendChild(input)
+        input.onclick = checkConferenciaClick
     }
 })();
+
